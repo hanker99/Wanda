@@ -1,0 +1,134 @@
+<div class="">
+    <div>
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3 class="text-center position-relative">Clerk {{#if details}}Update {{else}} Add{{/if}}
+                                data <a href="/load-data/meal-kits">
+                                    <buttton class="position-absolute end-0 btn btn-success">Back</button>
+                                </a></h3>
+                            <form class="requires-validation" novalidate method="POST"
+                                onsubmit="loaddataFormSubmit(event)" enctype="multipart/form-data">
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="title" class="form-control" type="text" value="{{details.title}}"
+                                            name="title" placeholder="Title" required>
+                                        {{#if details._id}}
+                                        <input type="hidden" name="id" value="{{details._id}}" />
+                                        {{/if}}
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="includes" class="form-control" type="text"
+                                            value="{{details.includes}}" name="includes" placeholder="What is included?"
+                                            required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="description" class="form-control" type="text"
+                                            value="{{details.description}}" name="description" placeholder="Description"
+                                            required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        {{!-- <input id="category" class="form-control" type="text"
+                                            value="{{details.description}}" name="category" placeholder="Category"
+                                            required> --}}
+                                            
+                                        <select id="category" class="form-control" name="category" value="{{details.category}}" placeholder="Category">
+                                           {{#select details.category}}
+                                            <option value="Classic Meals">Classic Meals</option>
+                                            <option value="Spice Meals">Spice Meals</option>
+                                            {{/select}}
+                                        </select>
+                                            
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="price" class="form-control" value="{{details.price}}" type="text"
+                                            name="price" placeholder="Price" required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="cookingTime" class="form-control" value="{{details.cookingTime}}"
+                                            type="text" name="cookingTime" placeholder="Cooking Time" required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="servings" class="form-control" value="{{details.servings}}"
+                                            type="text" name="servings" placeholder="Servings" required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-control-wrap">
+                                        <input id="caloriesPerServing" class="form-control"
+                                            value="{{details.caloriesPerServing}}" type="text" name="caloriesPerServing"
+                                            placeholder="Calories Per Serving " required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="form-control-wrap">
+                                        <input class="form-check-input" id="topMeal" checked="{{details.topMeal}}"
+                                            name="topMeal" type="checkbox" value="1" required>
+                                        <label class="form-check-label">Is it top meal?</label>
+                                        <div class="invalid-feedback">Please confirm that the entered data are all
+                                            correct!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 image-wrap">
+                                    <div class="form-control-wrap show-choose-img {{#if details.imageUrl}}hide {{/if}}">
+                                        <input id="file" class="form-control" type="file" name="file" accept="image/png, image/gif, image/jpeg, image/jpg"
+                                            placeholder="Upload file " required>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    {{#if details.imageUrl}}
+                                    <div class="show-thumbnail d-flex align-items-center">
+                                        <input id="imageUrl" type="hidden" name="imageUrl" value="{{details.imageUrl}}">
+                                        <img class="rounded-circle" style="width: 70px; height: 70px" src="{{details.imageUrl}}" alt="" />
+                                        <div class="btn btn-success ms-3" onclick="hideThumbnail(event)">Change Image </div>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit" type="submit" class="btn btn-warning">Submit</button>
+                                </div>
+                                <div id="form-error" class="pt-2 text-center" style="color: red;">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

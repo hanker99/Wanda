@@ -1,0 +1,23 @@
+<div class="row px-4 py-5 ">
+    <div class="row g-2 g-md-5">
+        <h1 class="text-center">Top Meal</h1>
+        {{#each topMeals}}
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+            
+            <div class="card">
+                <a href="mealkit-detail/{{this._id}}" style="color: unset;">
+                <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                </div>
+                 </a>
+                <div class="d-flex justify-content-end p-4">
+                    <div class="btn btn-primary" onclick="addToCart(event)" data-key={{this._id}}>Order for {{this.price}}</div>
+                </div>
+            </div>
+           
+        </div>
+        {{/each}}
+    </div>
+</div>
